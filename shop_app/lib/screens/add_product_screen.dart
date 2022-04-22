@@ -355,7 +355,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 4),
                                 child: Text(
-                                  '₹',
+                                  'VND',
                                   style: TextStyle(
                                       fontSize: 28,
                                       color: Theme.of(context).brightness ==

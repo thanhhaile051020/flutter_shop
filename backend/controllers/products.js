@@ -25,7 +25,7 @@ exports.products_get_all = (req, res, next) => {
               " " +
               doc.sellerId.lastname,
             productImage:
-              "https://fluttershop-backend.herokuapp.com/" +
+              "http://localhost:3000/" +
               doc.productImage,
           };
         }),
