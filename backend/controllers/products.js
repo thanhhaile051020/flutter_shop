@@ -25,7 +25,7 @@ exports.products_get_all = (req, res, next) => {
               " " +
               doc.sellerId.lastname,
             productImage:
-              "http://localhost:3000/" +
+              "http://10.0.2.2:3000/" +
               doc.productImage,
           };
         }),
@@ -91,7 +91,7 @@ exports.products_get_one = (req, res, next) => {
           category: doc.category,
           sellerName: doc.sellerName,
           productImage:
-            "https://fluttershop-backend.herokuapp.com/" +
+            "http://10.0.2.2:3000/" +
             doc.productImage,
         });
       } else {
