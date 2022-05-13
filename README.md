@@ -4,11 +4,11 @@ A shopping shop developed with flutter
 
 Flutter:
 
-cd flutter folder
+cd shop_app folder
 flutter pub get
 flutter run (all path name not had special characters)
 
 Express:
-cd express folder
+cd backend folder
 npm i
 npm run start
