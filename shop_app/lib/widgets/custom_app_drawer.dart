@@ -32,6 +32,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
 
   toggleDark() {
     Provider.of<AuthProvider>(context, listen: false).toggleDark();
+
     setState(() {
       isDark = !isDark;
     });
@@ -87,10 +88,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
               Navigator.of(context).pop();
               Navigator.of(context).pushNamed(MyOrderPage.routeName);
             }),
-            option(context, 'My Account', Icons.person, () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pushNamed(MyAccountPage.routeName);
-            }),
+            // option(context, 'My Account', Icons.person, () {
+            //   Navigator.of(context).pop();
+            //   Navigator.of(context).pushNamed(MyAccountPage.routeName);
+            // }),
             if (role == 0 || role == 1)
               option(context, 'My Cart', Icons.shopping_cart, () {
                 Navigator.of(context).pop();
@@ -105,8 +106,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
               Navigator.of(context).pop();
               Navigator.of(context).pushNamed(MyProduct.routeName);
             }),
-            option(context, 'About Us', Icons.help_outline, () {}),
-            option(context, 'Rate Us', Icons.star, () {}),
+            // option(context, 'About Us', Icons.help_outline, () {}),
+            // option(context, 'Rate Us', Icons.star, () {}),
             option(context, 'Log Out', Icons.logout, () {
               Provider.of<AuthProvider>(context, listen: false).logout();
             }),

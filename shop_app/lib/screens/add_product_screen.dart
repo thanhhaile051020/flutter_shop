@@ -351,19 +351,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                   Radius.circular(4),
                                 ),
                               ),
-                              icon: Container(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 4),
-                                child: Text(
-                                  'VND',
-                                  style: TextStyle(
-                                      fontSize: 28,
-                                      color: Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Colors.white70
-                                          : Colors.grey.shade600),
-                                ),
-                              ),
+                              icon: Icon(Icons.paid),
                               labelText: 'Price',
                               labelStyle: GoogleFonts.poppins(),
                             ),

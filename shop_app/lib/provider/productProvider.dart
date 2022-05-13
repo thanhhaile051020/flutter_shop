@@ -95,10 +95,10 @@ class ProductProvider with ChangeNotifier {
   Future<void> updateProduct(Map<String, String> m) async {
     var id = m['id'];
     print(id);
-    try {
+    // try {
       if (m['path']!.contains('com')) {
         print('without image');
-        Uri url = Uri.parse("https://10.0.2.2:3000/products/withoutImage/$id");
+        Uri url = Uri.parse("http://10.0.2.2:3000/products/withoutImage/$id");
         var data = json.encode({
           'name': m['name'],
           'price': m['price'],
@@ -115,31 +115,30 @@ class ProductProvider with ChangeNotifier {
         if (responseData['error'] != null) {
           throw HttpException(responseData['error']);
         }
-      } else {
-        Uri url = Uri.parse("https://10.0.2.2:3000/products/withImage/$id");
+      // } else {
+      //   Uri url = Uri.parse("http://10.0.2.2:3000/products/withImage/$id");
+      //   Map<String, String> headers = <String, String>{
+      //     'Authorization': "Bearer $_authToken"
+      //   };
 
-        Map<String, String> headers = <String, String>{
-          'Authorization': "Bearer $_authToken"
-        };
-
-        var request = http.MultipartRequest('PATCH', url)
-          ..headers.addAll(headers)
-          ..fields['name'] = m['name']!
-          ..fields['price'] = m['price']!
-          ..fields['description'] = m['description']!
-          ..fields['category'] = m['category']!
-          ..files.add(
-            await http.MultipartFile.fromPath(
-              'productImage',
-              m['path']!,
-              contentType: new MediaType('image', 'jpeg'),
-            ),
-          );
-        var response = await request.send();
-        if (response.statusCode > 300) {
-          throw HttpException(response.reasonPhrase!);
-        }
-      }
+      //   var request = http.MultipartRequest('PATCH', url)
+      //     ..headers.addAll(headers)
+      //     ..fields['name'] = m['name']!
+      //     ..fields['price'] = m['price']!
+      //     ..fields['description'] = m['description']!
+      //     ..fields['category'] = m['category']!
+      //     ..files.add(
+      //       await http.MultipartFile.fromPath(
+      //         'productImage',
+      //         m['path']!,
+      //         contentType: new MediaType('image', 'jpeg'),
+      //       ),
+      //     );
+      //   var response = await request.send();
+      //   if (response.statusCode > 300) {
+      //     throw HttpException(response.reasonPhrase!);
+      //   }
+      // }
       getProducts();
     } catch (err) {
       throw err;

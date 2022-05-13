@@ -46,6 +46,7 @@ class AuthProvider with ChangeNotifier {
     _isDark = !_isDark;
 
     secureStroage.writeSecureStorage('isDark', isDark.toString());
+
     notifyListeners();
   }
 

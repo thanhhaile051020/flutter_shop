@@ -74,7 +74,7 @@ class User with ChangeNotifier {
   }
 
   Future<void> toggleFavFromDB(String route, String pid) async {
-    Uri uri = Uri.parse("https://10.0.2.2:3000/user/$route/$pid");
+    Uri uri = Uri.parse("http://10.0.2.2:3000/user/$route/$pid");
     var response =
         await http.post(uri, headers: {"Authorization": "Bearer $_token"});
     print(response.body);
@@ -98,7 +98,7 @@ class User with ChangeNotifier {
   }
 
   Future<void> getMyDetail() async {
-    Uri uri = Uri.parse("https://10.0.2.2:3000/user/$_userId");
+    Uri uri = Uri.parse("http://10.0.2.2:3000/user/$_userId");
     try {
       var response =
           await http.get(uri, headers: {'Authorization': "Bearer $_token"});
@@ -122,7 +122,7 @@ class User with ChangeNotifier {
               name: p['name'],
               price: p['price'],
               description: p['description'],
-              image: "https://10.0.2.2:3000/" + p['productImage'],
+              image: "http://10.0.2.2:3000/" + p['productImage'],
               category: p['category'],
               sellerId: p['sellerId'],
               sellerName: p['seller']),
@@ -136,7 +136,7 @@ class User with ChangeNotifier {
   }
 
   Future<void> updateUser(Map<String, String> info) async {
-    Uri url = Uri.parse("https://10.0.2.2:3000/user/update");
+    Uri url = Uri.parse("http://10.0.2.2:3000/user/update");
     var details = json.encode({
       "email": info['email'],
       "firstname": info["firstname"],
@@ -168,7 +168,7 @@ class User with ChangeNotifier {
   }
 
   Future<void> deleteUser(String id) async {
-    Uri url = Uri.parse("https://10.0.2.2:3000/user/$id");
+    Uri url = Uri.parse("http://10.0.2.2:3000/user/$id");
     try {
       var response =
           await http.delete(url, headers: {"Authorization": "Bearer $_token"});
