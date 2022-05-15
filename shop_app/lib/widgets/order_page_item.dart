@@ -42,7 +42,7 @@ class OrderPageItem extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                '$quantity x ${product.price} = VND${quantity * product.price}',
+                '$quantity x ${product.price} = USD${quantity * product.price}',
                 style: GoogleFonts.raleway(
                     fontWeight: FontWeight.bold, fontSize: 16),
               ),

@@ -6,10 +6,12 @@ import 'package:shop_app/models/HttpException.dart';
 import 'package:shop_app/models/cart.dart';
 import 'package:shop_app/provider/cartProvider.dart';
 import 'package:shop_app/widgets/cart_item.dart';
+import 'package:shop_app/widgets/paypal_payment.dart';
 
 class OrderDetailPage extends StatefulWidget {
   static const routeName = "order-detail";
-
+  final int success;
+  OrderDetailPage(this.success);
   @override
   _OrderDetailPageState createState() => _OrderDetailPageState();
 }
@@ -63,7 +65,23 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
         ? setState(() {
             _currentStep += 1;
           })
-        : placeOrder();
+        : paymentType();
+  }
+
+  paymentType() {
+    print(paymentMethod);
+    if (paymentMethod == "Pay with Paypal") {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const PaypalPayment(
+              amount: 3,
+              currency: 'USD',
+            ),
+          ));
+    } else {
+      placeOrder();
+    }
   }
 
   cancel() {
@@ -124,7 +142,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
             content: Column(
               children: <Widget>[
                 paymentOption('Cash on Delivery'),
-                paymentOption('Credit / Debit Card'),
+                paymentOption('Pay with Paypal'),
                 paymentOption('UPI / Wallet'),
               ],
             ),

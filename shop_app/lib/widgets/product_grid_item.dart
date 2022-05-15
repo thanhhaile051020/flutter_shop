@@ -194,7 +194,7 @@ class _ProductGridItemState extends State<ProductGridItem> {
                     ? const EdgeInsets.only(left: 10, bottom: 8, right: 10)
                     : const EdgeInsets.only(left: 16, bottom: 8, right: 16),
                 child: Text(
-                  'VND ${widget.product.price.toString()}',
+                  'USD ${widget.product.price.toString()}',
                   style: Theme.of(context).textTheme.bodyText1,
                   textAlign: TextAlign.center,
                 ),

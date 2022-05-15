@@ -74,6 +74,7 @@ class Cart with ChangeNotifier {
             'Authorization': 'Bearer $_token',
             'Content-Type': 'application/json'
           });
+
       var responsedata = json.decode(response.body);
       if (responsedata['error'] != null) {
         throw HttpException(responsedata['error']);

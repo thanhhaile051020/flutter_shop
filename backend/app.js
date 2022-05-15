@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const path = require("path");
-
+const cookieParser = require("cookie-parser");
 //Importing routes
 const userRoute = require("./routes/user");
 const productsRoute = require("./routes/products");
@@ -49,7 +49,7 @@ app.use((req, res, next) => {
 //Using morgan to log every request
 //It is middleware which uses next function after logging the request
 app.use(morgan("dev"));
-
+app.use(cookieParser());
 //making uploads directory public
 app.use("/uploads", express.static("uploads"));
 
@@ -57,6 +57,7 @@ app.use("/uploads", express.static("uploads"));
 app.use("/user", userRoute);
 app.use("/products", productsRoute);
 app.use("/orders", ordersRoute);
+app.use(require("./routes/paypal")); 
 
 //Handling error likes invalid pages
 app.use((req, res, next) => {

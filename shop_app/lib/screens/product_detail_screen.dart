@@ -204,7 +204,7 @@ class ProductDetailScreen extends StatelessWidget {
             style:
                 GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.w600),
           ),
-          Text('VND ${loadedProduct.price}',
+          Text('USD ${loadedProduct.price}',
               style: GoogleFonts.poppins(
                   fontSize: 18, fontWeight: FontWeight.bold)),
           Text('Seller - ${loadedProduct.sellerName}',

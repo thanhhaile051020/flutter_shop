@@ -113,7 +113,7 @@ class MyApp extends StatelessWidget {
                 MyOrderPage.routeName: (ctx) => MyOrderPage(),
                 MyProduct.routeName: (ctx) => MyProduct(),
                 MyFavScreen.routeName: (ctx) => MyFavScreen(),
-                OrderDetailPage.routeName: (ctx) => OrderDetailPage()
+                OrderDetailPage.routeName: (ctx) => OrderDetailPage(0)
               },
             );
           },
