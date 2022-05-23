@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage>
   Map<String, String> authData = {
     'email': '',
     'password': '',
-    'fName': '',
+    'fName': 'SoulShop',
     'lName': '',
   };
 
@@ -108,22 +108,6 @@ class _LoginPageState extends State<LoginPage>
         padding: const EdgeInsets.symmetric(horizontal: 20),
         height: widget.screenSize.height,
         width: widget.screenSize.width,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: Theme.of(context).brightness == Brightness.dark
-                ? [
-                    // Colors.blueAccent,
-                    Colors.cyan.withOpacity(0.4),
-                    Color(0xFF0D47A1),
-                  ]
-                : [
-                    Colors.purple,
-                    Colors.blue,
-                  ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
-        ),
         child: Center(
           child: isLoading
               ? CircularProgressIndicator()
@@ -131,13 +115,6 @@ class _LoginPageState extends State<LoginPage>
                   duration: Duration(milliseconds: 300),
                   width: 350,
                   padding: const EdgeInsets.all(8),
-                  height: isSignUp
-                      ? widget.screenSize.width > 960
-                          ? widget.screenSize.height * 0.85
-                          : widget.screenSize.height * 0.7
-                      : widget.screenSize.width > 960
-                          ? widget.screenSize.height * 0.6
-                          : widget.screenSize.height * 0.5,
                   color: Theme.of(context).brightness == Brightness.dark
                       ? Colors.black54
                       : Colors.white,
@@ -152,7 +129,7 @@ class _LoginPageState extends State<LoginPage>
                           Container(
                             margin: const EdgeInsets.symmetric(vertical: 40),
                             child: Text(
-                              isSignUp ? 'Sign Up' : 'LOGIN',
+                              isSignUp ? 'Create Account' : 'Welcome Back!',
                               style: TextStyle(
                                   fontSize: 28, fontWeight: FontWeight.bold),
                             ),
@@ -164,76 +141,26 @@ class _LoginPageState extends State<LoginPage>
                                 horizontal: 20, vertical: 5),
                             child: FadeTransition(
                               opacity: _opacityAnimation,
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Container(
-                                      color: Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Colors.black54
-                                          : Colors.grey[300],
-                                      child: TextFormField(
-                                        validator: isSignUp
-                                            ? (value) {
-                                                if (value!.isEmpty) {
-                                                  return 'Invalid!';
-                                                }
-                                              }
-                                            : null,
-                                        onSaved: (newValue) {
-                                          authData['fName'] =
-                                              newValue.toString();
-                                        },
-                                        decoration: InputDecoration(
-                                            contentPadding:
-                                                const EdgeInsets.symmetric(
-                                                    horizontal: 10),
-                                            border: InputBorder.none,
-                                            hintText: 'First Name'),
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  Expanded(
-                                    child: Container(
-                                      color: Theme.of(context).brightness ==
-                                              Brightness.dark
-                                          ? Colors.black54
-                                          : Colors.grey[300],
-                                      child: TextFormField(
-                                        validator: isSignUp
-                                            ? (value) {
-                                                if (value!.isEmpty) {
-                                                  return 'Invalid!';
-                                                }
-                                              }
-                                            : null,
-                                        onSaved: (newValue) {
-                                          authData['lName'] =
-                                              newValue.toString();
-                                        },
-                                        decoration: InputDecoration(
-                                            contentPadding:
-                                                const EdgeInsets.symmetric(
-                                                    horizontal: 10),
-                                            border: InputBorder.none,
-                                            hintText: 'Last Name'),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              child: TextFormField(
+                                validator: isSignUp
+                                    ? (value) {
+                                        if (value!.isEmpty) {
+                                          return 'Invalid!';
+                                        }
+                                      }
+                                    : null,
+                                onSaved: (newValue) {
+                                  authData['lName'] = newValue.toString();
+                                },
+                                decoration: InputDecoration(
+                                    hintText: 'Full Name',
+                                    labelText: "Full Name"),
                               ),
                             ),
                           ),
                           if (isSignUp)
                             Container(
                               height: 50,
-                              color: Theme.of(context).brightness ==
-                                      Brightness.dark
-                                  ? Colors.black54
-                                  : Colors.grey[300],
                               margin: const EdgeInsets.symmetric(
                                   horizontal: 20, vertical: 5),
                               child: DropdownButtonFormField(
@@ -258,21 +185,13 @@ class _LoginPageState extends State<LoginPage>
                                     : null,
                                 dropdownColor: Colors.grey[300],
                                 decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  contentPadding: const EdgeInsets.symmetric(
-                                    horizontal: 10,
-                                  ),
+                                  labelText: "Type of account",
                                 ),
                               ),
                             ),
                           Container(
                             margin: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 5),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.black54
-                                    : Colors.grey[300]),
                             child: TextFormField(
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
@@ -285,22 +204,20 @@ class _LoginPageState extends State<LoginPage>
                                 authData['email'] = newValue.toString();
                               },
                               decoration: InputDecoration(
-                                border: InputBorder.none,
-                                prefixIcon: Icon(
+                                border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                suffixIcon: Icon(
                                   Icons.email_outlined,
                                 ),
-                                hintText: 'Email',
+                                labelText: "Email",
+                                hintText: 'email@email.com',
                               ),
                             ),
                           ),
                           Container(
                             margin: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 5),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.black54
-                                    : Colors.grey[300]),
                             child: TextFormField(
                               obscureText: hidePassword,
                               controller: _passwordController,
@@ -312,28 +229,24 @@ class _LoginPageState extends State<LoginPage>
                                 authData['password'] = newValue.toString();
                               },
                               decoration: InputDecoration(
-                                border: InputBorder.none,
-                                prefixIcon: Icon(
-                                  Icons.lock_outline,
-                                ),
-                                focusColor: Colors.grey,
-                                suffixIcon: GestureDetector(
-                                    onTapDown: (details) {
-                                      setState(() {
-                                        hidePassword = false;
-                                      });
-                                    },
-                                    onTapUp: (details) {
-                                      setState(() {
-                                        hidePassword = true;
-                                      });
-                                    },
-                                    child: Icon(
-                                      Icons.visibility,
-                                      color: Colors.grey.shade600,
-                                    )),
-                                hintText: 'Password',
-                              ),
+                                  focusColor: Colors.grey,
+                                  suffixIcon: GestureDetector(
+                                      onTapDown: (details) {
+                                        setState(() {
+                                          hidePassword = false;
+                                        });
+                                      },
+                                      onTapUp: (details) {
+                                        setState(() {
+                                          hidePassword = true;
+                                        });
+                                      },
+                                      child: Icon(
+                                        Icons.visibility,
+                                        color: Colors.grey.shade600,
+                                      )),
+                                  labelText: 'Password',
+                                  hintText: 'password'),
                             ),
                           ),
                           AnimatedContainer(
@@ -341,11 +254,6 @@ class _LoginPageState extends State<LoginPage>
                             height: isSignUp ? 50 : 0,
                             margin: const EdgeInsets.symmetric(
                                 horizontal: 20, vertical: 5),
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).brightness ==
-                                        Brightness.dark
-                                    ? Colors.black54
-                                    : Colors.grey[300]),
                             child: FadeTransition(
                               opacity: _opacityAnimation,
                               child: TextFormField(
@@ -358,35 +266,27 @@ class _LoginPageState extends State<LoginPage>
                                       }
                                     : null,
                                 decoration: InputDecoration(
-                                  contentPadding:
-                                      EdgeInsets.symmetric(vertical: 15),
-                                  border: InputBorder.none,
-                                  prefixIcon: !isSignUp
-                                      ? null
-                                      : Icon(
-                                          Icons.lock_outline,
-                                        ),
-                                  focusColor: Colors.grey,
-                                  suffixIcon: GestureDetector(
-                                    onTapDown: (details) {
-                                      setState(() {
-                                        hidePassword = false;
-                                      });
-                                    },
-                                    onTapUp: (details) {
-                                      setState(() {
-                                        hidePassword = true;
-                                      });
-                                    },
-                                    child: !isSignUp
-                                        ? null
-                                        : Icon(
-                                            Icons.visibility,
-                                            color: Colors.grey.shade600,
-                                          ),
-                                  ),
-                                  hintText: 'Confirm Password',
-                                ),
+                                    focusColor: Colors.grey,
+                                    suffixIcon: GestureDetector(
+                                      onTapDown: (details) {
+                                        setState(() {
+                                          hidePassword = false;
+                                        });
+                                      },
+                                      onTapUp: (details) {
+                                        setState(() {
+                                          hidePassword = true;
+                                        });
+                                      },
+                                      child: !isSignUp
+                                          ? null
+                                          : Icon(
+                                              Icons.visibility,
+                                              color: Colors.grey.shade600,
+                                            ),
+                                    ),
+                                    hintText: 'Confirm Password',
+                                    labelText: 'Confirm Password'),
                               ),
                             ),
                           ),
@@ -399,7 +299,7 @@ class _LoginPageState extends State<LoginPage>
                               child: Container(
                                 child: Center(
                                   child: Text(
-                                    isSignUp ? 'Sign Up' : 'LOGIN',
+                                    isSignUp ? 'Sign Up' : 'Sign In',
                                     textAlign: TextAlign.center,
                                   ),
                                 ),

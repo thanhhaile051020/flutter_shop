@@ -20,6 +20,8 @@ import 'package:shop_app/screens/order_detail_screen.dart';
 import 'package:shop_app/screens/product_detail_screen.dart';
 import 'package:shop_app/screens/searchpage.dart';
 
+import 'package:shop_app/theme.dart';
+
 import './screens/mainPage.dart';
 
 void main() async {
@@ -83,24 +85,7 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               themeMode: auth.isDark ? ThemeMode.dark : ThemeMode.light,
-              theme: ThemeData(
-                primarySwatch: Colors.indigo,
-                accentColor: Colors.amber,
-                fontFamily: 'Poppins',
-                pageTransitionsTheme: PageTransitionsTheme(builders: {
-                  TargetPlatform.android: ZoomPageTransitionsBuilder()
-                }),
-                textTheme: TextTheme(
-                  headline6: GoogleFonts.poppins(
-                    fontWeight: FontWeight.bold,
-                  ),
-                  bodyText1: GoogleFonts.raleway(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  subtitle2: GoogleFonts.notoSans(fontSize: 16),
-                ),
-              ),
+              theme: theme(),
               home: MainScreen(auth),
               routes: {
                 ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
