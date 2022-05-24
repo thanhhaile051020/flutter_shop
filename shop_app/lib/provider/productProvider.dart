@@ -13,7 +13,7 @@ class ProductProvider with ChangeNotifier {
 
   ProductProvider(this._authToken, this._userId, this.products);
 
-  Future<void> getProducts() async {
+  Future getProducts() async {
     final Uri url = Uri.http("10.0.2.2:3000", 'products');
     final response = await http.get(url);
     final responeData = json.decode(response.body);
@@ -34,7 +34,10 @@ class ProductProvider with ChangeNotifier {
     });
 
     products = loadedProduct;
+
+    print('api : $products');
     notifyListeners();
+    return products;
     // responeData['products'].fore
   }
 

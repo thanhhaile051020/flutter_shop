@@ -7,6 +7,7 @@ class Product {
   final String image;
   final String sellerId;
   final String sellerName;
+  final bool isFavourite, isPopular;
 
   Product({
     required this.id,
@@ -17,5 +18,7 @@ class Product {
     required this.image,
     required this.sellerId,
     this.sellerName = '',
+    this.isFavourite = false,
+    this.isPopular = false,
   });
 }
