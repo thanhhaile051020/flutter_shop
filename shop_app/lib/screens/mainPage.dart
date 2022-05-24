@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
 
 import 'package:shop_app/screens/homepage.dart';
 import 'loginpage.dart';
@@ -33,10 +34,12 @@ class MainScreen extends StatelessWidget {
                 builder: (context, snapshot) => LoginPage(
                     Size(constraints.maxWidth, constraints.maxHeight)),
               )
-            : HomePage(size, Size(constraints.maxWidth, constraints.maxHeight),
-                auth.role);
+            : HomeScreen();
       },
     );
+
+//  : HomePage(size, Size(constraints.maxWidth, constraints.maxHeight),
+//                 auth.role);
 
     // return Consumer<AuthProvider>(
     //   builder: (context, auth, _) {
