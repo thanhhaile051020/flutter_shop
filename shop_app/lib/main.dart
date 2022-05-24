@@ -12,6 +12,7 @@ import 'package:shop_app/provider/userProvider.dart';
 import 'package:shop_app/screens/add_product_screen.dart';
 import 'package:shop_app/screens/adminScreens/userDetailScreen_admin.dart';
 import 'package:shop_app/screens/cartPage.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/my_account_page.dart';
 import 'package:shop_app/screens/my_favorite_screen.dart';
 import 'package:shop_app/screens/my_orders_page.dart';
@@ -88,6 +89,7 @@ class MyApp extends StatelessWidget {
               theme: theme(),
               home: MainScreen(auth),
               routes: {
+                HomeScreen.routeName: (ctx) => HomeScreen(),
                 ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
                 AddProductScreen.routeName: (ctx) => AddProductScreen(),
                 SearchPage.routeName: (ctx) => SearchPage(),

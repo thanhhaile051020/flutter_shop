@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/components/coustom_bottom_nav_bar.dart';
+import 'package:shop_app/components/product_card.dart';
+import 'package:shop_app/enums.dart';
 import 'package:shop_app/models/product.dart';
 import 'package:shop_app/provider/userProvider.dart';
 import 'package:shop_app/screens/mainPage.dart';
@@ -39,12 +42,12 @@ class _MyFavScreenState extends State<MyFavScreen> {
       appBar: AppBar(
         title: Text(
           'My Favorites',
-          style: Theme.of(context).textTheme.headline6!.copyWith(
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? null
-                    : Colors.white,
-              ),
+          style: Theme.of(context)
+              .textTheme
+              .headline6!
+              .copyWith(color: Colors.black),
         ),
+        centerTitle: true,
       ),
       body: isLoading
           ? Center(
@@ -61,25 +64,22 @@ class _MyFavScreenState extends State<MyFavScreen> {
                             ? ScreenSize.large
                             : ScreenSize.extraLarge;
                 return StaggeredGridView.countBuilder(
-                  crossAxisCount: screenSize == ScreenSize.small
-                      ? 2
-                      : screenSize == ScreenSize.extraLarge
-                          ? 4
-                          : 3,
+                  crossAxisCount: 2,
                   mainAxisSpacing: 16,
                   crossAxisSpacing: 16,
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   itemCount: _p.length,
                   itemBuilder: (context, index) {
-                    return ProductGridItem(
+                    return ProductCard(
                       product: _p[index],
-                      screenSize: screenSize,
                     );
                   },
                   staggeredTileBuilder: (int i) => new StaggeredTile.fit(1),
                 );
               }),
             ),
+      bottomNavigationBar:
+          CustomBottomNavBar(selectedMenu: MenuState.favourite),
     );
   }
 }
