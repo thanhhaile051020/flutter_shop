@@ -245,14 +245,14 @@ class _AddProductScreenState extends State<AddProductScreen> {
                             items: [
                               DropdownMenuItem(
                                 child: Text(
-                                  'Grocery',
+                                  'Furniture',
                                   style: GoogleFonts.poppins(),
                                 ),
-                                value: 'Grocery',
+                                value: 'Furniture',
                               ),
                               DropdownMenuItem(
                                 child: Text(
-                                  'Mobile',
+                                  'Mobiles',
                                   style: GoogleFonts.poppins(),
                                 ),
                                 value: 'Mobiles',
@@ -266,31 +266,17 @@ class _AddProductScreenState extends State<AddProductScreen> {
                               ),
                               DropdownMenuItem(
                                 child: Text(
-                                  'Electronics',
+                                  'Toy',
                                   style: GoogleFonts.poppins(),
                                 ),
-                                value: 'Electronics',
+                                value: 'Toy',
                               ),
                               DropdownMenuItem(
                                 child: Text(
-                                  'Home',
+                                  'More',
                                   style: GoogleFonts.poppins(),
                                 ),
-                                value: 'Home',
-                              ),
-                              DropdownMenuItem(
-                                child: Text(
-                                  'Appliance',
-                                  style: GoogleFonts.poppins(),
-                                ),
-                                value: 'Appliances',
-                              ),
-                              DropdownMenuItem(
-                                child: Text(
-                                  'Beauty, Toy & More',
-                                  style: GoogleFonts.poppins(),
-                                ),
-                                value: 'Beauty, Toy & More',
+                                value: 'More',
                               ),
                             ],
                             value: product['category'] != ""

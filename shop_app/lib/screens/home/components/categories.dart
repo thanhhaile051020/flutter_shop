@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shop_app/screens/list_product.dart';
 
 import '../../../size_config.dart';
 
@@ -23,7 +24,10 @@ class Categories extends StatelessWidget {
           (index) => CategoryCard(
             icon: categories[index]["icon"],
             text: categories[index]["text"],
-            press: () {},
+            press: () {
+              Navigator.of(context).pushNamed(ListProduct.routeName,
+                  arguments: categories[index]["text"]);
+            },
           ),
         ),
       ),

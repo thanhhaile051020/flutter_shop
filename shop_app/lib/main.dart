@@ -13,6 +13,7 @@ import 'package:shop_app/screens/add_product_screen.dart';
 import 'package:shop_app/screens/adminScreens/userDetailScreen_admin.dart';
 import 'package:shop_app/screens/cartPage.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
+import 'package:shop_app/screens/list_product.dart';
 import 'package:shop_app/screens/my_account_page.dart';
 import 'package:shop_app/screens/my_favorite_screen.dart';
 import 'package:shop_app/screens/my_orders_page.dart';
@@ -90,6 +91,7 @@ class MyApp extends StatelessWidget {
               home: MainScreen(auth),
               routes: {
                 HomeScreen.routeName: (ctx) => HomeScreen(),
+                ListProduct.routeName: (ctx) => ListProduct(),
                 ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
                 AddProductScreen.routeName: (ctx) => AddProductScreen(),
                 SearchPage.routeName: (ctx) => SearchPage(),

@@ -38,10 +38,11 @@ class _MyFavScreenState extends State<MyFavScreen> {
   @override
   Widget build(BuildContext context) {
     List<Product> _p = Provider.of<User>(context).favs;
+    final quantityFav = _p.length;
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'My Favorites',
+          'My Favorites ($quantityFav)',
           style: Theme.of(context)
               .textTheme
               .headline6!
@@ -56,18 +57,8 @@ class _MyFavScreenState extends State<MyFavScreen> {
           : Padding(
               padding: const EdgeInsets.all(8.0),
               child: LayoutBuilder(builder: (context, constraints) {
-                ScreenSize screenSize = constraints.maxWidth < 960
-                    ? ScreenSize.small
-                    : constraints.maxWidth < 1200
-                        ? ScreenSize.medium
-                        : constraints.maxWidth < 1920
-                            ? ScreenSize.large
-                            : ScreenSize.extraLarge;
                 return StaggeredGridView.countBuilder(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   itemCount: _p.length,
                   itemBuilder: (context, index) {
                     return ProductCard(

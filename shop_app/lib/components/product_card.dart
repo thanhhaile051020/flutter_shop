@@ -100,7 +100,9 @@ class ProductCard extends StatelessWidget {
                       ),
                       child: SvgPicture.asset(
                         "assets/icons/Heart Icon_2.svg",
-                        color: isFav ? Color(0xFFFF4848) : Color(0xFFDBDEE4),
+                        color: isFav
+                            ? Color(0xFFFF4848)
+                            : Color.fromARGB(255, 65, 66, 68),
                       ),
                     ),
                   ),
