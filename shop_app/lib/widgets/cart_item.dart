@@ -10,6 +10,8 @@ import 'package:shop_app/provider/userProvider.dart';
 import 'package:shop_app/screens/my_favorite_screen.dart';
 import 'package:shop_app/widgets/cart_item_button.dart';
 import 'package:shop_app/widgets/quantity_control.dart';
+import 'package:flutter_svg/svg.dart';
+import '../../../size_config.dart';
 
 class GenCartItem extends StatelessWidget {
   final CartItem cartItem;
@@ -56,7 +58,8 @@ class GenCartItem extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              generateRow(itemTitle, image, 3, 2),
+              genTemplate(cartItem),
+              // generateRow(itemTitle, image, 3, 2),
               generateRow(
                   totalPricrPerItem, QuantityControl(cartItem: cartItem), 3, 2),
               generateRow(
@@ -93,6 +96,55 @@ class GenCartItem extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Row genTemplate(cartItem) {
+    return Row(
+      children: [
+        SizedBox(
+          width: 88,
+          child: AspectRatio(
+            aspectRatio: 0.88,
+            child: Container(
+              padding: EdgeInsets.all(getProportionateScreenWidth(10)),
+              decoration: BoxDecoration(
+                color: Color(0xFFF5F6F9),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: CachedNetworkImage(
+                imageUrl: cartItem.image,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(width: 20),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              cartItem.title,
+              style: TextStyle(color: Colors.black, fontSize: 16),
+              maxLines: 2,
+            ),
+            SizedBox(height: 10),
+            Text.rich(
+              TextSpan(
+                text: "\$${cartItem.price}",
+                style: TextStyle(
+                    fontWeight: FontWeight.w600, color: Color(0xFFFF7643)),
+                children: [
+                  TextSpan(
+                    text: " x${cartItem.quantity}",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600, color: Color(0xFFFF7643)),
+                  )
+                ],
+              ),
+            )
+          ],
+        )
+      ],
     );
   }
 

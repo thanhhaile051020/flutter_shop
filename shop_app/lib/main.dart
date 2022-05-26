@@ -11,15 +11,20 @@ import 'package:shop_app/provider/userProvider.dart';
 
 import 'package:shop_app/screens/add_product_screen.dart';
 import 'package:shop_app/screens/adminScreens/userDetailScreen_admin.dart';
+import 'package:shop_app/screens/cart/cartPage.dart';
+// import 'package:shop_app/screens/cart/cart_screen.dart';
 import 'package:shop_app/screens/cartPage.dart';
+import 'package:shop_app/screens/details/details_screen.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/list_product.dart';
+import 'package:shop_app/screens/loginpage.dart';
 import 'package:shop_app/screens/my_account_page.dart';
 import 'package:shop_app/screens/my_favorite_screen.dart';
 import 'package:shop_app/screens/my_orders_page.dart';
 import 'package:shop_app/screens/my_product_screen.dart';
 import 'package:shop_app/screens/order_detail_screen.dart';
 import 'package:shop_app/screens/product_detail_screen.dart';
+import 'package:shop_app/screens/profile/profile_screen.dart';
 import 'package:shop_app/screens/searchpage.dart';
 
 import 'package:shop_app/theme.dart';
@@ -92,13 +97,17 @@ class MyApp extends StatelessWidget {
               routes: {
                 HomeScreen.routeName: (ctx) => HomeScreen(),
                 ListProduct.routeName: (ctx) => ListProduct(),
-                ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+                ProfileScreen.routeName: (ctx) => ProfileScreen(),
+                LoginPage.routeName: (ctx) => LoginPage(),
+                // CartScreen.routeName: (ctx) => CartScreen(),
+                // ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
+                DetailsScreen.routeName: (ctx) => DetailsScreen(),
                 AddProductScreen.routeName: (ctx) => AddProductScreen(),
                 SearchPage.routeName: (ctx) => SearchPage(),
                 UserDetailScreenAdmin.routeName: (ctx) =>
                     UserDetailScreenAdmin(),
                 MyAccountPage.routeName: (ctx) => MyAccountPage(),
-                CartPage.routeName: (ctx) => CartPage(),
+                CartScreen.routeName: (ctx) => CartScreen(),
                 MyOrderPage.routeName: (ctx) => MyOrderPage(),
                 MyProduct.routeName: (ctx) => MyProduct(),
                 MyFavScreen.routeName: (ctx) => MyFavScreen(),

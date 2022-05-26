@@ -31,8 +31,7 @@ class MainScreen extends StatelessWidget {
         return !auth.isAuth
             ? FutureBuilder(
                 future: auth.tryAutoLogin(),
-                builder: (context, snapshot) => LoginPage(
-                    Size(constraints.maxWidth, constraints.maxHeight)),
+                builder: (context, snapshot) => LoginPage(),
               )
             : HomeScreen();
       },

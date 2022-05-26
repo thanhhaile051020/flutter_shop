@@ -9,6 +9,7 @@ import 'package:shop_app/provider/productProvider.dart';
 import 'package:shop_app/provider/userProvider.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:shop_app/screens/add_product_screen.dart';
+import 'package:shop_app/screens/cart/cartPage.dart';
 import 'package:shop_app/screens/cartPage.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -152,7 +153,7 @@ class ProductDetailScreen extends StatelessWidget {
                     action: SnackBarAction(
                       label: 'Go to Cart',
                       onPressed: () {
-                        Navigator.of(context).pushNamed(CartPage.routeName);
+                        Navigator.of(context).pushNamed(CartScreen.routeName);
                       },
                     ),
                   ),
@@ -176,7 +177,7 @@ class ProductDetailScreen extends StatelessWidget {
                   loadedProduct.name,
                   loadedProduct.image,
                 );
-                Navigator.of(context).pushNamed(CartPage.routeName);
+                Navigator.of(context).pushNamed(CartScreen.routeName);
               },
               child: Container(
                 height: 60,

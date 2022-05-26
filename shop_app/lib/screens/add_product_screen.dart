@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/HttpException.dart';
 import 'package:shop_app/provider/productProvider.dart';
 
@@ -22,7 +24,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final FocusNode descriptionScope = FocusNode();
   File _image;
   final picker = ImagePicker();
-  String selected = "Grocery";
+  String selected = "Furniture";
   bool isInit = false;
   bool isEdit = false;
   var isLoading = false;
@@ -159,11 +161,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
         title: Text(
           'Add Product',
           style: Theme.of(context).textTheme.headline6.copyWith(
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? null
-                    : Colors.white,
+                color: Colors.black,
               ),
         ),
+        centerTitle: true,
       ),
       body: isLoading
           ? Center(
@@ -220,12 +221,16 @@ class _AddProductScreenState extends State<AddProductScreen> {
                               Column(
                                 children: [
                                   ElevatedButton(
-                                    onPressed: getImage,
-                                    child: Text(
-                                      'Add Image',
-                                      style: GoogleFonts.poppins(),
-                                    ),
-                                  ),
+                                      onPressed: getImage,
+                                      child: Text(
+                                        'Add Image',
+                                        style: GoogleFonts.poppins(),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                          primary: kPrimaryColor,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(20)))),
                                   Text(
                                     'Max size: 2MB',
                                     style: GoogleFonts.poppins(),
@@ -289,9 +294,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                             },
                             onSaved: (newValue) =>
                                 product['category'] = newValue,
-                            decoration: InputDecoration(
-                              icon: Icon(Icons.category_outlined),
-                            ),
+                            decoration: InputDecoration(labelText: "Category"),
                           ),
                         ),
                         Container(
@@ -307,7 +310,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                   Radius.circular(4),
                                 ),
                               ),
-                              icon: Icon(Icons.shopping_basket_outlined),
+                              suffixIcon: Icon(Icons.shopping_basket_outlined),
                               labelText: 'Name',
                               labelStyle: GoogleFonts.poppins(),
                             ),
@@ -337,7 +340,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                   Radius.circular(4),
                                 ),
                               ),
-                              icon: Icon(Icons.paid),
+                              suffixIcon: Icon(Icons.paid),
                               labelText: 'Price',
                               labelStyle: GoogleFonts.poppins(),
                             ),
@@ -362,7 +365,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                   Radius.circular(4),
                                 ),
                               ),
-                              icon: Icon(Icons.note_outlined),
+                              suffixIcon: Icon(Icons.note_outlined),
                               labelText: 'Description',
                               labelStyle: GoogleFonts.poppins(),
                             ),
@@ -373,31 +376,27 @@ class _AddProductScreenState extends State<AddProductScreen> {
                                 product['description'] = newValue,
                           ),
                         ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 30, vertical: 15),
+                          child: DefaultButton(
+                              press: () {
+                                if (_image == null && product['path'] == '') {
+                                  openDialog('Image not Selected!');
+                                }
+                                product['path'] = product['path'] == ''
+                                    ? _image.path
+                                    : product['path'];
+                                submit();
+                              },
+                              text: isEdit ? "Update" : 'Submit'),
+                        ),
                       ],
                     ),
                   ),
                 ),
               ),
             ),
-      bottomNavigationBar: Container(
-        // margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-        width: double.infinity,
-        height: 60,
-        child: ElevatedButton(
-          onPressed: () {
-            if (_image == null && product['path'] == '') {
-              openDialog('Image not Selected!');
-            }
-            product['path'] =
-                product['path'] == '' ? _image.path : product['path'];
-            submit();
-          },
-          child: Text(
-            isEdit ? "Update" : 'Submit',
-            style: GoogleFonts.poppins(fontSize: 18),
-          ),
-        ),
-      ),
     );
   }
 }

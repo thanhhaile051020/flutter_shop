@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/provider/authProvider.dart';
+import 'package:shop_app/screens/loginpage.dart';
+import 'package:shop_app/screens/my_account_page.dart';
 
 import 'profile_menu.dart';
 import 'profile_pic.dart';
@@ -15,17 +19,8 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "My Account",
             icon: "assets/icons/User Icon.svg",
-            press: () => {},
-          ),
-          ProfileMenu(
-            text: "Notifications",
-            icon: "assets/icons/Bell.svg",
-            press: () {},
-          ),
-          ProfileMenu(
-            text: "Settings",
-            icon: "assets/icons/Settings.svg",
-            press: () {},
+            press: () =>
+                {Navigator.pushNamed(context, MyAccountPage.routeName)},
           ),
           ProfileMenu(
             text: "Help Center",
@@ -35,7 +30,10 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Log Out",
             icon: "assets/icons/Log out.svg",
-            press: () {},
+            press: () {
+              Provider.of<AuthProvider>(context, listen: false).logout();
+              Navigator.pushNamed(context, LoginPage.routeName);
+            },
           ),
         ],
       ),
