@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/models/product.dart';
 import 'package:shop_app/provider/cartProvider.dart';
 import 'package:shop_app/provider/userProvider.dart';
+import 'package:shop_app/screens/cart/cartPage.dart';
 import 'package:shop_app/screens/cartPage.dart';
 import 'package:shop_app/screens/mainPage.dart';
 import 'package:shop_app/screens/my_favorite_screen.dart';
@@ -151,7 +152,7 @@ class _ProductGridItemState extends State<ProductGridItem> {
                                       label: 'Go to Cart',
                                       onPressed: () {
                                         Navigator.of(context)
-                                            .pushNamed(CartPage.routeName);
+                                            .pushNamed(CartScreen.routeName);
                                       },
                                     ),
                                   ),

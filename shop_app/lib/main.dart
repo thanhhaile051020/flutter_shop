@@ -11,6 +11,8 @@ import 'package:shop_app/provider/userProvider.dart';
 
 import 'package:shop_app/screens/add_product_screen.dart';
 import 'package:shop_app/screens/adminScreens/userDetailScreen_admin.dart';
+import 'package:shop_app/screens/cart/cartPage.dart';
+// import 'package:shop_app/screens/cart/cart_screen.dart';
 import 'package:shop_app/screens/cartPage.dart';
 import 'package:shop_app/screens/details/details_screen.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
@@ -97,6 +99,7 @@ class MyApp extends StatelessWidget {
                 ListProduct.routeName: (ctx) => ListProduct(),
                 ProfileScreen.routeName: (ctx) => ProfileScreen(),
                 LoginPage.routeName: (ctx) => LoginPage(),
+                // CartScreen.routeName: (ctx) => CartScreen(),
                 // ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
                 DetailsScreen.routeName: (ctx) => DetailsScreen(),
                 AddProductScreen.routeName: (ctx) => AddProductScreen(),
@@ -104,7 +107,7 @@ class MyApp extends StatelessWidget {
                 UserDetailScreenAdmin.routeName: (ctx) =>
                     UserDetailScreenAdmin(),
                 MyAccountPage.routeName: (ctx) => MyAccountPage(),
-                CartPage.routeName: (ctx) => CartPage(),
+                CartScreen.routeName: (ctx) => CartScreen(),
                 MyOrderPage.routeName: (ctx) => MyOrderPage(),
                 MyProduct.routeName: (ctx) => MyProduct(),
                 MyFavScreen.routeName: (ctx) => MyFavScreen(),

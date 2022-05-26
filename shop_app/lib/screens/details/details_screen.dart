@@ -68,10 +68,45 @@ class DetailsScreen extends StatelessWidget {
           ),
           child: DefaultButton(
             text: "Add To Cart",
-            press: () {},
+            press: () {
+              Provider.of<Cart>(context, listen: false).addItem(
+                loadedProduct.id,
+                loadedProduct.price,
+                loadedProduct.name,
+                loadedProduct.image,
+              );
+              showAlertDialog(context);
+            },
           ),
         ),
       ),
+    );
+  }
+
+  showAlertDialog(BuildContext context) {
+    // set up the button
+    Widget okButton = TextButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Thông báo"),
+      content: Text("Đã thêm vào giỏ"),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
     );
   }
 }
