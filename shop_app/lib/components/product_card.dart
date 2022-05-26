@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/models/product.dart';
 import 'package:shop_app/provider/productProvider.dart';
 import 'package:shop_app/provider/userProvider.dart';
+import 'package:shop_app/screens/details/details_screen.dart';
 // import 'package:shop_app/screens/details/details_screen.dart';
 
 import '../constants.dart';
@@ -34,11 +35,11 @@ class ProductCard extends StatelessWidget {
       child: SizedBox(
         width: getProportionateScreenWidth(width),
         child: GestureDetector(
-          // onTap: () => Navigator.pushNamed(
-          //   context,
-          //   DetailsScreen.routeName,
-          //   arguments: ProductDetailsArguments(product: product),
-          // ),
+          onTap: () => Navigator.pushNamed(
+            context,
+            DetailsScreen.routeName,
+            arguments: product.id,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
