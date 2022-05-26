@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/screens/my_account_page.dart';
 // import 'package:shop_app/screens/cart/cart_screen.dart';
 
 import '../../../size_config.dart';
@@ -24,9 +25,10 @@ class HomeHeader extends StatelessWidget {
               // press: () => Navigator.pushNamed(context, CartScreen.routeName),
               press: () {}),
           IconBtnWithCounter(
-            svgSrc: "assets/icons/Bell.svg",
-            numOfitem: 3,
-            press: () {},
+            svgSrc: "assets/icons/User Icon.svg",
+            press: () {
+              Navigator.pushNamed(context, MyAccountPage.routeName);
+            },
           ),
         ],
       ),

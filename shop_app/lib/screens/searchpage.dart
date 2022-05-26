@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:shop_app/models/product.dart';
 import 'package:shop_app/provider/productProvider.dart';
+import 'package:shop_app/size_config.dart';
 import 'package:shop_app/widgets/searchPageProductItem.dart';
 
 class SearchPage extends StatefulWidget {
@@ -37,11 +38,17 @@ class _SearchPageState extends State<SearchPage> {
     return Scaffold(
       appBar: AppBar(
         title: TextField(
+          autofocus: true,
           decoration: InputDecoration(
-            hintText: 'Search',
-            hintStyle: GoogleFonts.poppins(color: Colors.white),
-            border: InputBorder.none,
-          ),
+              hintText: 'Search product',
+              hintStyle: GoogleFonts.poppins(color: Colors.black),
+              contentPadding: EdgeInsets.symmetric(
+                  horizontal: getProportionateScreenWidth(10),
+                  vertical: getProportionateScreenWidth(9)),
+              border: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              prefixIcon: Icon(Icons.search)),
           cursorColor: Colors.white,
           onChanged: (value) {
             search(value);

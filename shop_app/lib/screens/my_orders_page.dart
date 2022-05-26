@@ -34,12 +34,12 @@ class _MyOrderPageState extends State<MyOrderPage> {
       appBar: AppBar(
         title: Text(
           'My Orders',
-           style: Theme.of(context).textTheme.headline6!.copyWith(
-                      color: Theme.of(context).brightness == Brightness.dark
-                          ? null
-                          : Colors.white,
-                    ),
+          style: Theme.of(context)
+              .textTheme
+              .headline6!
+              .copyWith(color: Colors.black),
         ),
+        centerTitle: true,
       ),
       body: loading
           ? Center(
