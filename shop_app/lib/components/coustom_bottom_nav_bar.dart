@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:shop_app/provider/authProvider.dart';
+import 'package:shop_app/provider/userProvider.dart';
+import 'package:shop_app/screens/add_product_screen.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/my_favorite_screen.dart';
 import 'package:shop_app/screens/my_orders_page.dart';
@@ -19,6 +23,7 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color inActiveIconColor = Color(0xFFB6B6B6);
+    final role = Provider.of<AuthProvider>(context, listen: false).role;
     return Container(
       padding: EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
@@ -61,10 +66,6 @@ class CustomBottomNavBar extends StatelessWidget {
                   Navigator.of(context).pushNamed(MyFavScreen.routeName);
                 },
               ),
-              // IconButton(
-              //   icon: SvgPicture.asset("assets/icons/Chat bubble Icon.svg"),
-              //   onPressed: () {},
-              // ),
               IconButton(
                 icon: SvgPicture.asset(
                   "assets/icons/Bill Icon.svg",
@@ -75,6 +76,17 @@ class CustomBottomNavBar extends StatelessWidget {
                 onPressed: () =>
                     Navigator.pushNamed(context, MyOrderPage.routeName),
               ),
+              if (role == 0)
+                IconButton(
+                  icon: SvgPicture.asset(
+                    "assets/icons/online-store.svg",
+                    color: MenuState.product == selectedMenu
+                        ? kPrimaryColor
+                        : inActiveIconColor,
+                  ),
+                  onPressed: () =>
+                      Navigator.pushNamed(context, AddProductScreen.routeName),
+                ),
             ],
           )),
     );

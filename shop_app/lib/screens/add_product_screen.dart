@@ -22,7 +22,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final FocusNode descriptionScope = FocusNode();
   File _image;
   final picker = ImagePicker();
-  String selected = "Grocery";
+  String selected = "Furniture";
   bool isInit = false;
   bool isEdit = false;
   var isLoading = false;

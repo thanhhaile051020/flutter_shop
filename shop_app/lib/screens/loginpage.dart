@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/constants.dart';
 import 'package:shop_app/models/HttpException.dart';
 import 'package:shop_app/provider/authProvider.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage(this.screenSize);
-  final Size screenSize;
+  static const routeName = "login";
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -106,8 +107,6 @@ class _LoginPageState extends State<LoginPage>
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        height: widget.screenSize.height,
-        width: widget.screenSize.width,
         child: Center(
           child: isLoading
               ? CircularProgressIndicator()
@@ -138,7 +137,7 @@ class _LoginPageState extends State<LoginPage>
                             height: isSignUp ? 50 : 0,
                             duration: Duration(milliseconds: 300),
                             margin: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 5),
+                                horizontal: 20, vertical: 10),
                             child: FadeTransition(
                               opacity: _opacityAnimation,
                               child: TextFormField(
@@ -160,9 +159,8 @@ class _LoginPageState extends State<LoginPage>
                           ),
                           if (isSignUp)
                             Container(
-                              height: 50,
                               margin: const EdgeInsets.symmetric(
-                                  horizontal: 20, vertical: 5),
+                                  horizontal: 20, vertical: 10),
                               child: DropdownButtonFormField(
                                 items: [
                                   DropdownMenuItem(
@@ -191,7 +189,7 @@ class _LoginPageState extends State<LoginPage>
                             ),
                           Container(
                             margin: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 5),
+                                horizontal: 20, vertical: 10),
                             child: TextFormField(
                               keyboardType: TextInputType.emailAddress,
                               validator: (value) {
@@ -217,7 +215,7 @@ class _LoginPageState extends State<LoginPage>
                           ),
                           Container(
                             margin: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 5),
+                                horizontal: 20, vertical: 10),
                             child: TextFormField(
                               obscureText: hidePassword,
                               controller: _passwordController,
@@ -253,7 +251,7 @@ class _LoginPageState extends State<LoginPage>
                             duration: Duration(milliseconds: 300),
                             height: isSignUp ? 50 : 0,
                             margin: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 5),
+                                horizontal: 20, vertical: 10),
                             child: FadeTransition(
                               opacity: _opacityAnimation,
                               child: TextFormField(
@@ -304,9 +302,11 @@ class _LoginPageState extends State<LoginPage>
                                   ),
                                 ),
                               ),
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.resolveWith(getColor),
+                              style: TextButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                primary: Colors.white,
+                                backgroundColor: kPrimaryColor,
                               ),
                             ),
                           ),
@@ -339,7 +339,7 @@ class _LoginPageState extends State<LoginPage>
                                     }
                                   },
                                   child: Text(
-                                    isSignUp ? ' Login' : ' Sign up now',
+                                    isSignUp ? ' Sign in' : ' Sign up now',
                                     style: TextStyle(
                                       fontSize: 12,
                                       color: Colors.grey,

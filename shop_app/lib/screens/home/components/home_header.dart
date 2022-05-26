@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/screens/my_account_page.dart';
+import 'package:shop_app/screens/profile/profile_screen.dart';
 // import 'package:shop_app/screens/cart/cart_screen.dart';
 
 import '../../../size_config.dart';
@@ -27,7 +28,7 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: "assets/icons/User Icon.svg",
             press: () {
-              Navigator.pushNamed(context, MyAccountPage.routeName);
+              Navigator.pushNamed(context, ProfileScreen.routeName);
             },
           ),
         ],
