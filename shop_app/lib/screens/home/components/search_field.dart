@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/screens/searchpage.dart';
 
 import '../../../constants.dart';
 import '../../../size_config.dart';
@@ -17,11 +18,14 @@ class SearchField extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextField(
-        onChanged: (value) => print(value),
+        readOnly: true,
+        onTap: () {
+          Navigator.pushNamed(context, SearchPage.routeName);
+        },
         decoration: InputDecoration(
             contentPadding: EdgeInsets.symmetric(
                 horizontal: getProportionateScreenWidth(20),
-                vertical: getProportionateScreenWidth(9)),
+                vertical: getProportionateScreenWidth(5)),
             border: InputBorder.none,
             focusedBorder: InputBorder.none,
             enabledBorder: InputBorder.none,
