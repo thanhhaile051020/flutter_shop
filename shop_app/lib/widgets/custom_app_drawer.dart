@@ -95,7 +95,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             if (role == 0 || role == 1)
               option(context, 'My Cart', Icons.shopping_cart, () {
                 Navigator.of(context).pop();
-                Navigator.of(context).pushNamed(CartPage.routeName);
+                Navigator.of(context).pushNamed(CartScreen.routeName);
               }),
             if (role == 0 || role == 1)
               option(context, 'My Favorite', Icons.favorite, () {
