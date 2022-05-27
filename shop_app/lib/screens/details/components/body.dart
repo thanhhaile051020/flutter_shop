@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/components/default_button.dart';
+import 'package:shop_app/screens/details/components/color_dots.dart';
 // import 'package:shop_app/models/Product.dart';
 import 'package:shop_app/size_config.dart';
 
@@ -21,12 +22,19 @@ class Body extends StatelessWidget {
       children: [
         ProductImages(product: product),
         TopRoundedContainer(
-          color: Colors.white,
+          // color: Colors.white,
+          color: Color.fromARGB(255, 235, 238, 243),
           child: Column(
             children: [
               ProductDescription(
                 product: product,
                 // pressOnSeeMore: () {},
+              ),
+              TopRoundedContainer(
+                color: Colors.white,
+                child: ColorDot(
+                  product: product,
+                ),
               ),
             ],
           ),

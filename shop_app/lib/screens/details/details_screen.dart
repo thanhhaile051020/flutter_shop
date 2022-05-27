@@ -59,7 +59,8 @@ class DetailsScreen extends StatelessWidget {
       // body: Body(product: agrs.product),
       body: Body(product: loadedProduct),
       bottomNavigationBar: TopRoundedContainer(
-        color: Colors.white,
+        // color: Colors.white,
+        color: Color.fromARGB(255, 235, 238, 243),
         child: Padding(
           padding: EdgeInsets.only(
             left: SizeConfig.screenWidth * 0.15,
@@ -83,7 +84,7 @@ class DetailsScreen extends StatelessWidget {
                       Navigator.of(context).pop(true);
                     });
                     return AlertDialog(
-                      title: Text('Đã thêm vào giỏ'),
+                      title: Text('Added to cart!'),
                     );
                   });
             },

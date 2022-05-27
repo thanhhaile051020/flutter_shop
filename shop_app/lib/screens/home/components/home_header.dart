@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shop_app/screens/cart/cartPage.dart';
-import 'package:shop_app/screens/cartPage.dart';
-import 'package:shop_app/screens/my_account_page.dart';
+import 'package:shop_app/provider/cartProvider.dart';
+import 'package:provider/provider.dart';
+
 import 'package:shop_app/screens/profile/profile_screen.dart';
 // import 'package:shop_app/screens/cart/cart_screen.dart';
 
@@ -16,6 +17,9 @@ class HomeHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var list = Provider.of<Cart>(context).items;
+    var cartItems = list.values.toList();
+
     return Padding(
       padding:
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
@@ -24,6 +28,7 @@ class HomeHeader extends StatelessWidget {
         children: [
           SearchField(),
           IconBtnWithCounter(
+              numOfitem: cartItems.length,
               svgSrc: "assets/icons/Cart Icon.svg",
               press: () {
                 Navigator.of(context).pushNamed(CartScreen.routeName);
