@@ -1,30 +1,30 @@
 const Order = require("../models/orders");
 const Product = require("../models/product");
-
+const { ObjectId } = require("mongodb");
 exports.orders_get_orders = (req, res, next) => {
-  if(req.userData.userId == process.env.ADMIN_ID){
-    Order.find({user: req.headers.user}).select("products quantity _id date")
-    .exec()
-    .then((docs) => {
-      const respone = {
-        count: docs.length,
-        orders: docs.map((doc) => {
-          return {
-            id: doc._id,
-            date: doc.date,
-            products: doc.products,
-            quantity: doc.quantity,
-          };
-        }),
-      };
-      res.status(200).json(respone);
-    })
-    .catch((error) => {
-      res.status(500).json({
-        error: error,
+  if (req.userData.userId == process.env.ADMIN_ID) {
+    Order.find({ user: req.headers.user }).select("products quantity _id date")
+      .exec()
+      .then((docs) => {
+        const respone = {
+          count: docs.length,
+          orders: docs.map((doc) => {
+            return {
+              id: doc._id,
+              date: doc.date,
+              products: doc.products,
+              quantity: doc.quantity,
+            };
+          }),
+        };
+        res.status(200).json(respone);
+      })
+      .catch((error) => {
+        res.status(500).json({
+          error: error,
+        });
       });
-    });
-  }else{
+  } else {
 
     Order.find({ user: req.userData.userId })
       .select("products quantity _id date")
@@ -126,6 +126,18 @@ exports.orders_get_order = (req, res, next) => {
     .catch((error) => {
       res.status(500).json({ error: error });
     });
+};
+//http://localhost:3000/orders/seller
+exports.seller_get_orders = async (req, res, next) => {
+  try {
+    let products = await Product.find({ sellerId: req.userData.userId }).select('_id').lean()
+    let newProduct = products.map(data => data._id);
+    let orders = await Order.find({ products: { $elemMatch: { $in: newProduct } } })
+    console.log('products', orders)
+    return res.json(orders)
+  } catch (error) {
+    console.log(error)
+  }
 };
 
 exports.orders_delete_order = (req, res, next) => {

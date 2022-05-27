@@ -12,6 +12,12 @@ router.get(
   OrderController.orders_get_orders
 );
 
+router.get(
+  "/seller",
+  checkAuth,
+  OrderController.seller_get_orders
+);
+
 router.post(
   "/",
   checkAuth,
