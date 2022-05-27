@@ -15,6 +15,7 @@ class Quality extends StatefulWidget {
 
 class _Quality extends State<Quality> {
   int quality = 1;
+
   @override
   Widget build(BuildContext context) {
     return Row(
