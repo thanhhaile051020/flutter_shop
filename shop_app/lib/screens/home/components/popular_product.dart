@@ -13,27 +13,17 @@ class PopularProducts extends StatefulWidget {
 }
 
 class _PopularProducts extends State<PopularProducts> {
-  List<Product> products = [];
-  void initState() {
-    Provider.of<User>(context, listen: false).getMyDetail();
-    Provider.of<ProductProvider>(context, listen: false)
-        .getProducts()
-        .then((value) {
-      setState(() {
-        products = value;
-      });
-    });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<ProductProvider>(context);
+    provider.getProducts();
+    List<Product> products = provider.products;
     return Column(
       children: [
         Padding(
           padding:
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: SectionTitle(title: "Popular Products", press: () {}),
+          child: SectionTitle(title: "Newest products", press: () {}),
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
         SingleChildScrollView(
@@ -44,7 +34,7 @@ class _PopularProducts extends State<PopularProducts> {
                 products.length,
                 (index) {
                   return ProductCard(
-                    product: products[index],
+                    product: products[products.length - index - 1],
                   );
                 },
               ),

@@ -78,6 +78,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
           actions: [
             TextButton(
               onPressed: () {
+                Provider.of<ProductProvider>(context, listen: false)
+                    .getProducts();
                 Navigator.of(context).pop();
                 Navigator.of(context).pop();
               },
