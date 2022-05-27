@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:shop_app/screens/details/components/top_rounded_container.dart';
 
@@ -21,7 +23,6 @@ import 'package:shop_app/size_config.dart';
 
 class DetailsScreen extends StatelessWidget {
   static String routeName = "/details";
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -75,44 +76,20 @@ class DetailsScreen extends StatelessWidget {
                 loadedProduct.name,
                 loadedProduct.image,
               );
-              showAlertDialog(context);
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    Future.delayed(Duration(milliseconds: 1500), () {
+                      Navigator.of(context).pop(true);
+                    });
+                    return AlertDialog(
+                      title: Text('Đã thêm vào giỏ'),
+                    );
+                  });
             },
           ),
         ),
       ),
     );
   }
-
-  showAlertDialog(BuildContext context) {
-    // set up the button
-    Widget okButton = TextButton(
-      child: Text("OK"),
-      onPressed: () {
-        Navigator.of(context).pop();
-      },
-    );
-
-    // set up the AlertDialog
-    AlertDialog alert = AlertDialog(
-      title: Text("Thông báo"),
-      content: Text("Đã thêm vào giỏ"),
-      actions: [
-        okButton,
-      ],
-    );
-
-    // show the dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return alert;
-      },
-    );
-  }
 }
-
-// class ProductDetailsArguments {
-//   final Product product;
-
-//   ProductDetailsArguments({required this.product});
-// }

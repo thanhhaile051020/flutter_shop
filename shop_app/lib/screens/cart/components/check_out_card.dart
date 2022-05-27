@@ -47,7 +47,7 @@ class CheckoutCard extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: "\$" + total,
-                        style: TextStyle(fontSize: 16, color: Colors.black),
+                        style: TextStyle(fontSize: 20, color: Colors.black),
                       ),
                     ],
                   ),

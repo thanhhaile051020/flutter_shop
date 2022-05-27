@@ -33,8 +33,8 @@ class GenCartItem extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Center(
         child: Text(
-          "${cartItem.price * cartItem.quantity}",
-          style: Theme.of(context).textTheme.bodyText1,
+          "\$${cartItem.price * cartItem.quantity}",
+          style: Theme.of(context).textTheme.headline6,
         ),
       ),
     );
@@ -137,7 +137,8 @@ class GenCartItem extends StatelessWidget {
                   TextSpan(
                     text: " x${cartItem.quantity}",
                     style: TextStyle(
-                        fontWeight: FontWeight.w600, color: Color(0xFFFF7643)),
+                        fontWeight: FontWeight.w600,
+                        color: Color.fromARGB(255, 0, 0, 0)),
                   )
                 ],
               ),

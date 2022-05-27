@@ -10,7 +10,7 @@ class UserTile extends StatelessWidget {
   const UserTile({
     Key? key,
     required user.User user,
-  })   : _user = user,
+  })  : _user = user,
         super(key: key);
 
   final user.User _user;

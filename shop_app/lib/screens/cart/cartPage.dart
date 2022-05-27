@@ -26,9 +26,7 @@ class CartScreen extends StatelessWidget {
           title: Text(
             'Cart',
             style: Theme.of(context).textTheme.headline6!.copyWith(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? null
-                      : Colors.white,
+                  color: Color.fromARGB(255, 0, 0, 0),
                 ),
           ),
         ),
