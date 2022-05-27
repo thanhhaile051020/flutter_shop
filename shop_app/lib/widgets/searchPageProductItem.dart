@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shop_app/models/product.dart';
+import 'package:shop_app/screens/details/details_screen.dart';
 import 'package:shop_app/screens/product_detail_screen.dart';
 
 class SimpleProductInfo extends StatelessWidget {
@@ -25,9 +26,8 @@ class SimpleProductInfo extends StatelessWidget {
           ),
         ),
         child: ListTile(
-          onTap: () => Navigator.of(context).pushNamed(
-              ProductDetailScreen.routeName,
-              arguments: product[index].id),
+          onTap: () => Navigator.of(context)
+              .pushNamed(DetailsScreen.routeName, arguments: product[index].id),
           leading: Hero(
             tag: product[index].id,
             child: CachedNetworkImage(
