@@ -57,7 +57,7 @@ class DetailsScreen extends StatelessWidget {
         ],
       ),
       // body: Body(product: agrs.product),
-      body: Body(product: loadedProduct),
+      body: Body(product: loadedProduct, isFav: isFav),
       bottomNavigationBar: TopRoundedContainer(
         // color: Colors.white,
         color: Color.fromARGB(255, 235, 238, 243),

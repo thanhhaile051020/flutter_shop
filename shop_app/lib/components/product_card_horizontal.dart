@@ -6,6 +6,7 @@ import 'package:shop_app/components/big_text.dart';
 import 'package:shop_app/components/icon_and_text.dart';
 import 'package:shop_app/components/small_text.dart';
 import 'package:shop_app/constants.dart';
+import 'package:shop_app/screens/details/details_screen.dart';
 import 'package:shop_app/size_config.dart';
 import 'package:shop_app/utils/colors.dart';
 import 'package:shop_app/utils/dimensions.dart';
@@ -34,6 +35,11 @@ class ProductCardHorizontal extends StatelessWidget {
       //     MaterialPageRoute(
       //       builder: (context) => PopularFoodDetail(),
       //     ))),
+      onTap: () => Navigator.pushNamed(
+        context,
+        DetailsScreen.routeName,
+        arguments: product.id,
+      ),
       child: Container(
         margin: EdgeInsets.only(
             top: Dimensions.widthDynamic(10),
