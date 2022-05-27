@@ -32,7 +32,7 @@ class Body extends StatelessWidget {
             icon: "assets/icons/Log out.svg",
             press: () {
               Provider.of<AuthProvider>(context, listen: false).logout();
-              Navigator.pushNamed(context, LoginPage.routeName);
+              Navigator.pop(context);
             },
           ),
         ],

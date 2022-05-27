@@ -5,8 +5,10 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/models/HttpException.dart';
 import 'package:shop_app/models/cart.dart';
 import 'package:shop_app/provider/cartProvider.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/widgets/cart_item.dart';
 import 'package:shop_app/widgets/paypal_payment.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OrderDetailPage extends StatefulWidget {
   static const routeName = "order-detail";
@@ -24,6 +26,10 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
   void placeOrder() async {
     try {
       await Provider.of<Cart>(context, listen: false).placeOrder();
+      // _cart.map((cartItem) =>
+      //     Provider.of<Cart>(context, listen: false).remove(cartItem.id));
+      // SAO K DELETE DC ???
+
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -37,8 +43,8 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
+                Provider.of<Cart>(context, listen: false).clearCart();
+                Navigator.of(context).pushNamed(HomeScreen.routeName);
               },
               child: Text(
                 'Okay!',
@@ -101,61 +107,68 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Order Details',
-          style: Theme.of(context)
-              .textTheme
-              .headline6!
-              .copyWith(color: Colors.white),
+        appBar: AppBar(
+          title: Text(
+            'Order Details',
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(color: Color.fromARGB(255, 0, 0, 0)),
+          ),
         ),
-      ),
-      body: Stepper(
-        steps: [
-          Step(
-            title: new Text('Address'),
-            content: Column(
-              children: <Widget>[
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'Home Address'),
+        body: Theme(
+          data: ThemeData(
+              // primarySwatch: Color(0xFFFF7643),
+              colorScheme: ColorScheme.light(primary: Color(0xFFFF7643))),
+          child: Stepper(
+            steps: [
+              Step(
+                title: new Text('Address'),
+                content: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Home Address'),
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Phone number'),
+                    ),
+                  ],
                 ),
-                TextFormField(
-                  decoration: InputDecoration(labelText: 'Postcode'),
+                isActive: _currentStep >= 0,
+                state:
+                    _currentStep >= 0 ? StepState.complete : StepState.disabled,
+              ),
+              Step(
+                title: new Text('Products'),
+                content: Column(
+                  children: <Widget>[
+                    ..._cart.map((cartItem) => GenCartItem(cartItem)).toList(),
+                  ],
                 ),
-              ],
-            ),
-            isActive: _currentStep >= 0,
-            state: _currentStep >= 0 ? StepState.complete : StepState.disabled,
+                isActive: _currentStep >= 0,
+                state:
+                    _currentStep >= 1 ? StepState.complete : StepState.disabled,
+              ),
+              Step(
+                title: new Text('Payment Method'),
+                content: Column(
+                  children: <Widget>[
+                    paymentOption('Cash on Delivery'),
+                    paymentOption('Pay with Paypal'),
+                    paymentOption('UPI / Wallet'),
+                  ],
+                ),
+                isActive: _currentStep >= 0,
+                state:
+                    _currentStep >= 2 ? StepState.complete : StepState.disabled,
+              ),
+            ],
+            currentStep: _currentStep,
+            onStepCancel: cancel,
+            onStepTapped: tapped,
+            onStepContinue: continued,
           ),
-          Step(
-            title: new Text('Products'),
-            content: Column(
-              children: <Widget>[
-                ..._cart.map((cartItem) => GenCartItem(cartItem)).toList(),
-              ],
-            ),
-            isActive: _currentStep >= 0,
-            state: _currentStep >= 1 ? StepState.complete : StepState.disabled,
-          ),
-          Step(
-            title: new Text('Payment Method'),
-            content: Column(
-              children: <Widget>[
-                paymentOption('Cash on Delivery'),
-                paymentOption('Pay with Paypal'),
-                paymentOption('UPI / Wallet'),
-              ],
-            ),
-            isActive: _currentStep >= 0,
-            state: _currentStep >= 2 ? StepState.complete : StepState.disabled,
-          ),
-        ],
-        currentStep: _currentStep,
-        onStepCancel: cancel,
-        onStepTapped: tapped,
-        onStepContinue: continued,
-      ),
-    );
+        ));
   }
 
   Row paymentOption(String val) {

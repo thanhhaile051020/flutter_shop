@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/provider/cartProvider.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class PaypalPayment extends StatefulWidget {
@@ -63,8 +64,8 @@ class _PaypalPaymentState extends State<PaypalPayment> {
                 actions: [
                   TextButton(
                     onPressed: () {
-                      Navigator.of(context).pop();
-                      Navigator.of(context).pop();
+                      Provider.of<Cart>(context, listen: false).clearCart();
+                      Navigator.of(context).pushNamed(HomeScreen.routeName);
                     },
                     child: Text(
                       'Okay!',

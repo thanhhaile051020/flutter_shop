@@ -98,16 +98,15 @@ class MyApp extends StatelessWidget {
                 HomeScreen.routeName: (ctx) => HomeScreen(),
                 ListProduct.routeName: (ctx) => ListProduct(),
                 ProfileScreen.routeName: (ctx) => ProfileScreen(),
-                LoginPage.routeName: (ctx) => LoginPage(),
                 // CartScreen.routeName: (ctx) => CartScreen(),
                 // ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
-                DetailsScreen.routeName: (ctx) => DetailsScreen(),
+                DetailsScreen.routeName: (ctx) => DetailsScreen(), //new
+                CartScreen.routeName: (ctx) => CartScreen(), // new
                 AddProductScreen.routeName: (ctx) => AddProductScreen(),
                 SearchPage.routeName: (ctx) => SearchPage(),
                 UserDetailScreenAdmin.routeName: (ctx) =>
                     UserDetailScreenAdmin(),
                 MyAccountPage.routeName: (ctx) => MyAccountPage(),
-                CartScreen.routeName: (ctx) => CartScreen(),
                 MyOrderPage.routeName: (ctx) => MyOrderPage(),
                 MyProduct.routeName: (ctx) => MyProduct(),
                 MyFavScreen.routeName: (ctx) => MyFavScreen(),
