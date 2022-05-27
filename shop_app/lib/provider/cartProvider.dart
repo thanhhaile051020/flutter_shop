@@ -13,6 +13,7 @@ class Cart with ChangeNotifier {
   List<String> _ps = [];
   List<int> _q = [];
   List<Order> _orders = [];
+  List<Order> _revenues = [];
 
   Cart(this._userId, this._token);
 
@@ -36,6 +37,10 @@ class Cart with ChangeNotifier {
     return List.from(_orders.reversed);
   }
 
+  List<Order> get revenues {
+    return List.from(_revenues.reversed);
+  }
+
   Future<void> getOrder(String userId) async {
     final Uri url = Uri.http("10.0.2.2:3000", 'orders');
     var response = await http
@@ -55,6 +60,27 @@ class Cart with ChangeNotifier {
       );
     }
     _orders = o;
+    notifyListeners();
+  }
+
+  Future<void> getProductSold(String userId) async {
+    final Uri url = Uri.http("10.0.2.2:3000", 'orders/seller');
+    var response = await http
+        .get(url, headers: {'Authorization': 'Bearer $_token', 'user': userId});
+    var responseData = json.decode(response.body);
+    var orders = responseData;
+    List<Order> o = [];
+    for (int i = 0; i < orders.length; i++) {
+      var x = orders[i];
+      o.add(
+        new Order(
+            id: x['_id'],
+            dateTime: DateTime.parse(x['date']),
+            q: x['quantity'],
+            pIds: x['products']),
+      );
+    }
+    _revenues = o;
     notifyListeners();
   }
 

@@ -8,6 +8,7 @@ import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/my_favorite_screen.dart';
 import 'package:shop_app/screens/my_orders_page.dart';
 import 'package:shop_app/screens/my_product_screen.dart';
+import 'package:shop_app/screens/my_shop.dart';
 import 'package:shop_app/screens/profile/profile_screen.dart';
 
 import '../constants.dart';
@@ -81,12 +82,12 @@ class CustomBottomNavBar extends StatelessWidget {
                 IconButton(
                   icon: SvgPicture.asset(
                     "assets/icons/online-store.svg",
-                    color: MenuState.product == selectedMenu
+                    color: MenuState.myShop == selectedMenu
                         ? kPrimaryColor
                         : inActiveIconColor,
                   ),
                   onPressed: () =>
-                      Navigator.pushNamed(context, MyProduct.routeName),
+                      Navigator.pushNamed(context, MyShop.routeName),
                 ),
             ],
           )),

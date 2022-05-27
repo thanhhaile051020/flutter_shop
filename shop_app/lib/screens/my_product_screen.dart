@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/components/product_card_horizontal.dart';
 import 'package:shop_app/models/product.dart';
 import 'package:shop_app/provider/authProvider.dart';
+import 'package:shop_app/provider/cartProvider.dart';
 import 'package:shop_app/provider/productProvider.dart';
 import 'package:shop_app/screens/add_product_screen.dart';
 import 'package:shop_app/screens/mainPage.dart';
@@ -16,6 +17,7 @@ class MyProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     final String user =
         Provider.of<AuthProvider>(context, listen: false).userId;
+    // Provider.of<Cart>(context).getProductSold(user);
     List<Product> _p = Provider.of<ProductProvider>(context).findBySeller(user);
     return Scaffold(
       appBar: AppBar(

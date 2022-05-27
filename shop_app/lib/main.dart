@@ -22,9 +22,11 @@ import 'package:shop_app/screens/my_account_page.dart';
 import 'package:shop_app/screens/my_favorite_screen.dart';
 import 'package:shop_app/screens/my_orders_page.dart';
 import 'package:shop_app/screens/my_product_screen.dart';
+import 'package:shop_app/screens/my_shop.dart';
 import 'package:shop_app/screens/order_detail_screen.dart';
 import 'package:shop_app/screens/product_detail_screen.dart';
 import 'package:shop_app/screens/profile/profile_screen.dart';
+import 'package:shop_app/screens/revenues.dart';
 import 'package:shop_app/screens/searchpage.dart';
 
 import 'package:shop_app/theme.dart';
@@ -110,7 +112,9 @@ class MyApp extends StatelessWidget {
                 MyOrderPage.routeName: (ctx) => MyOrderPage(),
                 MyProduct.routeName: (ctx) => MyProduct(),
                 MyFavScreen.routeName: (ctx) => MyFavScreen(),
-                OrderDetailPage.routeName: (ctx) => OrderDetailPage(0)
+                OrderDetailPage.routeName: (ctx) => OrderDetailPage(0),
+                MyShop.routeName: (ctx) => MyShop(),
+                Revenues.routeName: (ctx) => Revenues(),
               },
             );
           },

@@ -34,8 +34,6 @@ class ProductProvider with ChangeNotifier {
     });
 
     products = loadedProduct;
-
-    print('api : $products');
     notifyListeners();
     return products;
     // responeData['products'].fore
