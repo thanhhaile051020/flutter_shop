@@ -22,10 +22,12 @@ class SearchField extends StatelessWidget {
         onTap: () {
           Navigator.pushNamed(context, SearchPage.routeName);
         },
+        textAlign: TextAlign.center,
         decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(20),
-                vertical: getProportionateScreenWidth(5)),
+            contentPadding: EdgeInsets.all(10.0),
+            // contentPadding: EdgeInsets.symmetric(
+            //     horizontal: getProportionateScreenWidth(20),
+            //     vertical: getProportionateScreenWidth(20)),
             border: InputBorder.none,
             focusedBorder: InputBorder.none,
             enabledBorder: InputBorder.none,

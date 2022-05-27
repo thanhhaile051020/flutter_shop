@@ -155,7 +155,7 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
                   children: <Widget>[
                     paymentOption('Cash on Delivery'),
                     paymentOption('Pay with Paypal'),
-                    paymentOption('UPI / Wallet'),
+                    // paymentOption('UPI / Wallet'),
                   ],
                 ),
                 isActive: _currentStep >= 0,
