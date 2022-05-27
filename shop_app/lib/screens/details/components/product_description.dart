@@ -22,11 +22,13 @@ class ProductDescription extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
+          padding: EdgeInsets.symmetric(
+            horizontal: getProportionateScreenWidth(20),
+          ),
           child: Text(
             product.name,
             style: Theme.of(context).textTheme.headline5,
+            textAlign: TextAlign.center,
           ),
         ),
         // Align(
@@ -76,11 +78,11 @@ class ProductDescription extends StatelessWidget {
 
         Padding(
           padding: EdgeInsets.only(
-            left: getProportionateScreenWidth(10),
-            right: getProportionateScreenWidth(64),
-          ),
+              left: getProportionateScreenWidth(10),
+              right: getProportionateScreenWidth(64),
+              bottom: 15),
           child: Text(
-            product.description,
+            "Description: " + product.description,
             maxLines: 5,
             style: TextStyle(fontSize: 15),
           ),

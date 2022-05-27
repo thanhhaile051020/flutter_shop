@@ -4,11 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:shop_app/provider/cartProvider.dart';
 import 'package:shop_app/screens/cart/components/check_out_card.dart';
-import 'package:shop_app/screens/order_detail_screen.dart';
 import 'package:shop_app/widgets/cart_item.dart';
-import 'package:shop_app/widgets/cart_total.dart';
-import 'package:flutter_svg/svg.dart';
-import '../../../size_config.dart';
 
 class CartScreen extends StatelessWidget {
   static const routeName = "/cart";
