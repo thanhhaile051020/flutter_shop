@@ -122,6 +122,13 @@ class Cart with ChangeNotifier {
     notifyListeners();
   }
 
+  void clearCart() {
+    _items = {};
+    _ps = [];
+    _q = [];
+    notifyListeners();
+  }
+
   void removeSingleItem(String id) {
     if (!_items.containsKey(id)) return;
     if (_items[id]!.quantity > 1) {

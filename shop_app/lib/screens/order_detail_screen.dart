@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/models/HttpException.dart';
 import 'package:shop_app/models/cart.dart';
 import 'package:shop_app/provider/cartProvider.dart';
+import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/widgets/cart_item.dart';
 import 'package:shop_app/widgets/paypal_payment.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -42,8 +43,8 @@ class _OrderDetailPageState extends State<OrderDetailPage> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop();
-                Navigator.of(context).pop();
+                Provider.of<Cart>(context, listen: false).clearCart();
+                Navigator.of(context).pushNamed(HomeScreen.routeName);
               },
               child: Text(
                 'Okay!',
