@@ -7,6 +7,7 @@ import 'package:shop_app/screens/add_product_screen.dart';
 import 'package:shop_app/screens/home/home_screen.dart';
 import 'package:shop_app/screens/my_favorite_screen.dart';
 import 'package:shop_app/screens/my_orders_page.dart';
+import 'package:shop_app/screens/my_product_screen.dart';
 import 'package:shop_app/screens/profile/profile_screen.dart';
 
 import '../constants.dart';
@@ -85,7 +86,7 @@ class CustomBottomNavBar extends StatelessWidget {
                         : inActiveIconColor,
                   ),
                   onPressed: () =>
-                      Navigator.pushNamed(context, AddProductScreen.routeName),
+                      Navigator.pushNamed(context, MyProduct.routeName),
                 ),
             ],
           )),

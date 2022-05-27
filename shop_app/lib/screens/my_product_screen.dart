@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/components/product_card_horizontal.dart';
 import 'package:shop_app/models/product.dart';
 import 'package:shop_app/provider/authProvider.dart';
 import 'package:shop_app/provider/productProvider.dart';
+import 'package:shop_app/screens/add_product_screen.dart';
 import 'package:shop_app/screens/mainPage.dart';
 import 'package:shop_app/widgets/product_grid_item.dart';
 
@@ -19,37 +21,32 @@ class MyProduct extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'My Products',
-          style: Theme.of(context).textTheme.headline6!.copyWith(
-                color: Theme.of(context).brightness == Brightness.dark
-                    ? null
-                    : Colors.white,
-              ),
+          style: Theme.of(context)
+              .textTheme
+              .headline6!
+              .copyWith(color: Colors.black),
         ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                Navigator.of(context).pushNamed(AddProductScreen.routeName);
+              }),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: LayoutBuilder(builder: (context, constraints) {
-          ScreenSize screenSize = constraints.maxWidth < 960
-              ? ScreenSize.small
-              : constraints.maxWidth < 1200
-                  ? ScreenSize.medium
-                  : constraints.maxWidth < 1920
-                      ? ScreenSize.large
-                      : ScreenSize.extraLarge;
           return StaggeredGridView.countBuilder(
-            crossAxisCount: screenSize == ScreenSize.small
-                ? 2
-                : screenSize == ScreenSize.extraLarge
-                    ? 4
-                    : 3,
+            crossAxisCount: 1,
             mainAxisSpacing: 16,
             crossAxisSpacing: 16,
             padding: const EdgeInsets.symmetric(horizontal: 16),
             itemCount: _p.length,
             itemBuilder: (context, index) {
-              return ProductGridItem(
-                product: _p[index],
-                screenSize: screenSize,
+              return ProductCardHorizontal(
+                product: _p[_p.length - index - 1],
               );
             },
             staggeredTileBuilder: (int i) => new StaggeredTile.fit(1),

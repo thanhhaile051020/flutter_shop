@@ -8,6 +8,7 @@ import 'package:shop_app/provider/cartProvider.dart';
 import 'package:shop_app/provider/userProvider.dart';
 import 'package:shop_app/screens/cart/cartPage.dart';
 import 'package:shop_app/screens/cartPage.dart';
+import 'package:shop_app/screens/details/details_screen.dart';
 import 'package:shop_app/screens/mainPage.dart';
 import 'package:shop_app/screens/my_favorite_screen.dart';
 import 'package:shop_app/screens/product_detail_screen.dart';
@@ -43,8 +44,8 @@ class _ProductGridItemState extends State<ProductGridItem> {
       },
       child: InkWell(
         onTap: () {
-          Navigator.of(context).pushNamed(ProductDetailScreen.routeName,
-              arguments: widget.product.id);
+          Navigator.of(context)
+              .pushNamed(DetailsScreen.routeName, arguments: widget.product.id);
         },
         child: AnimatedContainer(
           duration: Duration(milliseconds: 300),
@@ -195,7 +196,7 @@ class _ProductGridItemState extends State<ProductGridItem> {
                     ? const EdgeInsets.only(left: 10, bottom: 8, right: 10)
                     : const EdgeInsets.only(left: 16, bottom: 8, right: 16),
                 child: Text(
-                  'USD ${widget.product.price.toString()}',
+                  "USD ${widget.product.price.toString()}",
                   style: Theme.of(context).textTheme.bodyText1,
                   textAlign: TextAlign.center,
                 ),
