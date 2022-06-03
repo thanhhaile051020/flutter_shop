@@ -122,7 +122,7 @@ class User with ChangeNotifier {
               name: p['name'],
               price: p['price'],
               description: p['description'],
-              image: "http://10.0.2.2:3000/" + p['productImage'],
+              image: p['productImage'],
               category: p['category'],
               sellerId: p['sellerId'],
               sellerName: p['seller']),
