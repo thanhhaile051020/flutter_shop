@@ -191,9 +191,7 @@ exports.user_update_detail = (req, res, next) => {
       });
     })
     .catch((err) => {
-      res.status(500).json({
-        error: err,
-      });
+      console.log(err)
     });
 };
 

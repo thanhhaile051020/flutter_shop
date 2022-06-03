@@ -46,7 +46,7 @@ exports.products_add_product = (req, res, next) => {
         category: req.body.category,
         sellerName: req.body.sellerName,
         sellerId: req.userData.userId,
-        productImage:
+        productImage: 'http://10.0.2.2:3000/' +
           req.file.destination + req.file.filename,
       });
       product
@@ -63,7 +63,7 @@ exports.products_add_product = (req, res, next) => {
             .json({ error: error });
         });
     } else {
-      
+
       res.status(401).json({
         message: "You are not authenticated",
       });

@@ -119,6 +119,8 @@ class _MyAccountPageState extends State<MyAccountPage> {
                               labelText: "Email"),
                           style: TextStyle(color: Colors.grey),
                           onFieldSubmitted: (value) => details['email'] = value,
+                          onSaved: (value) =>
+                              details['email'] = value.toString(),
                           enableInteractiveSelection: false,
                         ),
                         SizedBox(
@@ -136,6 +138,8 @@ class _MyAccountPageState extends State<MyAccountPage> {
                               labelText: 'First Name'),
                           onFieldSubmitted: (value) =>
                               details['firstname'] = value,
+                          onSaved: (value) =>
+                              details['firstname'] = value.toString(),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'This field cannot be empty';
@@ -157,6 +161,8 @@ class _MyAccountPageState extends State<MyAccountPage> {
                               labelText: 'Last Name'),
                           onFieldSubmitted: (value) =>
                               details['lastname'] = value,
+                          onSaved: (value) =>
+                              details['lastname'] = value.toString(),
                           validator: (value) {
                             if (value!.isEmpty) {
                               return "This field cannot be empty";
@@ -178,6 +184,8 @@ class _MyAccountPageState extends State<MyAccountPage> {
                               labelText: 'Primary Address'),
                           onFieldSubmitted: (value) =>
                               details['address'] = value,
+                          onSaved: (value) =>
+                              details['address'] = value.toString(),
                           maxLines: 3,
                         ),
                         SizedBox(
@@ -196,6 +204,8 @@ class _MyAccountPageState extends State<MyAccountPage> {
                             labelText: 'Mobile no.',
                           ),
                           onFieldSubmitted: (value) => details['phone'] = value,
+                          onSaved: (value) =>
+                              details['phone'] = value.toString(),
                           validator: (value) {
                             if (value!.length < 10) {
                               return "Please enter a valid mobile number!";

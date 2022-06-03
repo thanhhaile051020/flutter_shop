@@ -13,11 +13,24 @@ class PopularProducts extends StatefulWidget {
 }
 
 class _PopularProducts extends State<PopularProducts> {
+  List<Product> products = [];
+  var _isLoading = false;
+  @override
+  void initState() {
+    Provider.of<ProductProvider>(context, listen: false)
+        .getProducts()
+        .then((value) {
+      setState(() {
+        _isLoading = false;
+      });
+      products = Provider.of<ProductProvider>(context, listen: false).products;
+    });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var provider = Provider.of<ProductProvider>(context);
-    provider.getProducts();
-    List<Product> products = provider.products;
     return Column(
       children: [
         Padding(
